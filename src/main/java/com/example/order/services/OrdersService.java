@@ -29,9 +29,11 @@ public class OrdersService {
     }
 
     public Orders addNewOrder(Orders orders){
-        Status status = statusRepository.getByName(orders.getStatus().getName());
-        if (status != null){
-            orders.setStatus(status);
+        if (orders.getStatus() != null) {
+            Status status = statusRepository.getByName(orders.getStatus().getName());
+            if (status != null) {
+                orders.setStatus(status);
+            }
         }
         return ordersRepository.add(orders);
     }

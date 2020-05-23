@@ -63,6 +63,9 @@ public class StatusRepository {
     }
 
     public Status getByName(String paramName){
+        if (paramName == null){
+            return null;
+        }
         List<Status> statusesList = entityManager
                 .createQuery("from Status where name = '"
                                 + paramName +
